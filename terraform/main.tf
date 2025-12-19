@@ -19,7 +19,6 @@ data "genesyscloud_routing_queue" "queue" {
 resource "genesyscloud_script" "script" {
   script_name       = "Schedule Callback"
   filepath          = "${path.module}/schedule-callback-script.json"
-  file_content_hash = filesha256("${path.module}/schedule-callback-script.json")
   substitutions = {
     name      = "Schedule Callback"
     queue_id  = data.genesyscloud_routing_queue.queue.id
